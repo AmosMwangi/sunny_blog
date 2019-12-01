@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <title>Hello, world!</title>
+  {%block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
+  {% endblock %}
+</head>
+
+<body>
+  <div class="container-fluid">
+    {% block content %}
+    <div id="sandwich">
+      <!----------- banner ------------>
+      <div class="con">
+        <main id=main></main>
+        <a href="/">
+          <div class="centered">
+            <div class="card wow bounceInUp" data-wow-iteration="infinite" id="card-logo">
+              <div class="card-body">
+                <h2 class="card-title" id="logo-text">Sunny Blog</h2>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <!----------- posts ------------>
+        <div class="col-md-6" style="margin-top: 44px !important;">
+          {% for post in posts %}
+
+          <div class="card" id="post-cards" style="width: 28rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{post.title}}</h5>
+              <p class="card-text">Posted on : {{post.posted.strftime('%d-%m-%Y')}}</p>
+              <hr>
+              <p class="card-text">{{post.post|truncate(350)}} </p>
+              <div class="col-md-3 col-sm-3 col-xs-6">
+                <a href="/post/{{post.id}}" class="btn btn-sm animated-button victoria-four">View</a>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+
+        <div class="col-md-6">
+          <!----------- random quotes ------------>
+          <div id="left-cards">
+            <div class="card" style="width: 20rem; margin-bottom: 30px;">
+              <div class="card-body">
+                <h5 class="card-title text-center">Magic Quotes</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">{{quote.quote}}</p>
+                <h6 class="card-subtitle mb-2 text-muted"><i><i>~ {{quote.author}}</i></i></h6>
+              </div>
+            </div>
+
+            <!----------- subscription part ------------>
+
+            <div class="card" style="width: 20rem;" id="subcribeform">
+              <div class="card-body">
+                <h5 class="card-title">Subscribe to our Blog</h5>
+                {{wtf.quick_form(subscriber_form)}}
+                {{simplemde.load}}
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-12">
+      <!----------- Footer ------------>
+      <footer class="footer-bs">
+        <div class="row">
+          <div class="col-md-3 footer-brand animated fadeInLeft">
+            <div id="cen">
+              <div class="card wow bounceInUp" data-wow-iteration="infinite" id="card-logo">
+                <div class="card-body">
+                  <h2 class="card-title" id="logo-text">Sunny Blog</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 footer-nav animated fadeInUp">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, labore assumenda! Dignissimos est illo
+              laboriosam suscipit! Soluta ut blanditiis dolore alias nesciunt eos dignissimos, illo vero temporibus
+              natus doloribus quia vel placeat odit nostrum molestias quo in cumque facere reiciendis dolor enim illum
+              perferendis asperiores! Molestiae reprehenderit atque perferendis eveniet.</p>
+          </div>
+          <div class="col-md-2 footer-social animated fadeInDown">
+            <h4>Follow Us</h4>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">RSS</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 footer-ns animated fadeInRight">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, repudiandae!</p>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    {% endblock %}
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+  </script>
+</body>
+
+</html>
