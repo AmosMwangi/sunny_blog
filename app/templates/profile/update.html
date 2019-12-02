@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+<!----------- banner ------------>
+<div id="sandwich">
+    <div class="con">
+        <main id=main></main>
+        <a href="/">
+            <div class="centered">
+                <div class="card wow rubberBand" id="card-logo">
+                    <div class="card-body">
+                        <h2 class="card-title" id="logo-text">Sunny Blog</h2>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% block content %}
+<div class="container" style="margin-top: 20em !important;">
+    {{wtf.quick_form(form)}}
+</div>
+{% endblock %}
