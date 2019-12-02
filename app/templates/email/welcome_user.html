@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<style>
+    body{
+        background-color: chocolate !important;
+    }
+    .con {
+        position: relative !important;
+        text-align: center !important;
+        color: white !important;
+
+    }
+
+    #main {
+        height: 300px !important;
+        background-color: rgb(248, 98, 98) !important;
+    }
+
+    .centered {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    #cen {
+        position: absolute !important;
+        top: 30% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    #card-logo {
+        border-radius: 50% !important;
+        height: 200px !important;
+        width: 200px !important;
+        background-color: rgb(221, 59, 59) !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        cursor: pointer !important;
+        animation: shadow-pulse 3s infinite !important;
+    }
+
+    @keyframes shadow-pulse {
+        0% {
+            box-shadow: 0 0 0 0px #d43030;
+        }
+
+        100% {
+            box-shadow: 0 0 0 20px rgba(63, 61, 61, 0);
+        }
+    }
+
+    #logo-text {
+        margin-top: 70px !important;
+        color: black;
+        font-family: 'Dancing Script', cursive;
+        font-size: 36px;
+    }
+</style>
+
+<body>
+    <section>
+        <div class="con">
+            <main id=main></main>
+            <a href="/">
+                <div class="centered">
+                    <div class="card wow bounceInUp" data-wow-iteration="infinite" id="card-logo">
+                        <div class="card-body">
+                            <h2 class="card-title" id="logo-text">Sunny Blog</h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="container">
+            <p>Hello {{user.username}},</p>
+            <p>We've successfully verified your sign up. You can now enjoy the full fetures of our website like posting
+            blogs and a lot more.</p>
+            <p>Don't forget to subcribe to get latest blog posts</p>
+
+            <p>from: Sunny Blog, CEO</p>
+
+            <p>for more info or support kindly contact sunnyblog@gmail.com</p>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
