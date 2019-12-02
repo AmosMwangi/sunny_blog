@@ -1,0 +1,73 @@
+{% extends 'base.html'%}
+{%block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+{% endblock %}
+
+
+{% block content %}
+<!----------- banner ------------>
+<div id="sandwich">
+  <div class="con">
+    <main id=main></main>
+    <a href="/">
+      <div class="centered">
+        <div class="card wow rubberBand" id="card-logo">
+          <div class="card-body">
+            <h2 class="card-title" id="logo-text">Sunny Blog</h2>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 10em !important;">
+  <div class="row">
+    <div class="col-md-8">
+      <!--Display profile photo-->
+      {% if user.profile_pic_path %}
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="rounded-circle card-img" style="width: 100px; height: 100px;;">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title" style="margin-top: 10px;">{{user.username| capitalize}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%else%}
+      <p>No profile picture</p>
+      {% endif %}
+
+
+    </div>
+
+    <!--create new profile photo-->
+    <div class="col-md-4">
+      {% if user == current_user %}
+      <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype="multipart/form-data">
+
+        <input type="file" name="photo" class="form-control" required>
+        <input type="submit">
+      </form>
+      {% endif %}
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+{% endblock %}
