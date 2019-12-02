@@ -17,7 +17,7 @@ class Config:
     
 
 class ProdConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_PINK_URL")
 
 class TestConfig(Config):
     DEBUG =True 
