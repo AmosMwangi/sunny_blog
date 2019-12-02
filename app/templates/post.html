@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles%}
+{{ super() }}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<!----------- banner ------------>
+<div id="sandwich">
+    <div class="con">
+        <main id=main></main>
+        <a href="/">
+            <div class="centered">
+                <div class="card wow rubberBand" id="card-logo">
+                    <div class="card-body">
+                        <h2 class="card-title" id="logo-text">Sunny Blog</h2>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 90px;">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card" style="width: 44rem;">
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <h3 class="card-title"> <u> {{post.title}} </u></h3>
+                        <h6 class="card-subtitle mb-2 text-muted">Posted on: {{post.posted.strftime('%d-%m-%Y')}}</h6>
+                        <p class="text-center">{{post.post}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="width: 26rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-center" style="font-family: 'Quicksand', sans-serif;">Comments</h5>
+                    <p class="card-text">{% for comment in comments %}</p>
+                    <p class="card-text">{{comment.comment}}</p>
+                    {% endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8" style="margin-top: 40px;">
+            <div class="card" style="width: 44rem;">
+                <div class="card-body">
+                    <div>
+                        {{wtf.quick_form(comment_form)}}
+                        {{simplemde.load}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
